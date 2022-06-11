@@ -1,0 +1,42 @@
+﻿@page
+@model FirstWebApp.Pages.Account.LoginModel
+@{
+    if (IsPost)
+    {
+        var Username = "";
+        var Password = "";
+        Username = Request.Form["Username"];
+        Password = Request.Form["Password"];
+        if (Username != "" && Password != "")
+        {
+            var db = Database.Open("Useri");
+            var command = @"SELECT username FROM Users WHERE username = @Username"; //when I put here 'nikola55' it works
+            var result = db.QueryValue(command, Username);
+
+
+            if (result != null)
+            {
+                Response.Redirect("~/Pages/Account/Login.cshtml");
+            }
+            else
+            {
+                <script type="text/javascript">
+                    alert("No user in database");
+                </script>
+            }
+}
+<form method="post">
+    <!-- to error: add class "has-danger" -->
+
+    <label for="exampleInputEmail1">username</label>
+    <input type="text" value="@Username">
+    <label for="exampleInputPassword1">Password</label>
+    <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
+    <input type="password" value="@Password">
+
+    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+
+    <div class="sign-up">
+        Don't have an account? <a href="/korisnik">Create One</a>
+    </div>
+</form>

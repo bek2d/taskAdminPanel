@@ -1,0 +1,20 @@
+﻿@page
+@model FirstWebApp.Pages.Account.LoginModel
+@{
+
+}
+<form method="post">
+    <!-- to error: add class "has-danger" -->
+
+    <label for="exampleInputEmail1">username</label>
+    <input type="text" value="Username">
+    <label for="exampleInputPassword1">Password</label>
+    <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
+    <input type="password" value="Password">
+
+    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+
+    <div class="sign-up">
+        Don't have an account? <a href="/korisnik">Create One</a>
+    </div>
+</form>

@@ -1,0 +1,38 @@
+﻿@page
+@model FirstWebApp.Pages.ClientsModel
+@{
+}
+<br/>
+
+<h2>List of clients</h2>
+
+
+<a class="btn btn-primary btn-sm" href="/Create">New Client </a>
+
+<table class="table">
+    <thread>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Date of Registration</th>
+        </tr>
+    </thread>
+    <tbody>
+    @foreach (var client in Model.listClients)
+    {
+        <tr>
+            <td>@client.id</td>
+            <td>@client.email</td>
+            <td>@client.name</td>
+            <td>@client.phone</td>
+            <td>@client.registration_date</td>
+            <td>
+                <a class="btn btn-primary btn-sm" href="/Edit?id=@client.id">Edit </a>
+                <a class="btn btn-danger btn-sm" href="/Delete?id=@client.id">Delete </a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

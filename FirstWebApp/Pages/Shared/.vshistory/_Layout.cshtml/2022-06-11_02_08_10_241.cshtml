@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+</head>
+<body>
+    <header>
+       
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Clients">Clients</a>
+                        </li>
+                        
+                        <li>
+                            @if(!User.Identity.IsAuthenticated) {
+                                <a href="/Account/Login">Login</a>
+                            } else {
+                                <form method="post" asp-page="/Account/Login" asp-page-handler="Logout">
+                                    <div class="input-group">
+                                        <span>@User.Identity.Name</span>
+                                        <button type="submit" class="btn btn-link">Logout</button>
+                                    </div>
+                                </form>
+                            }
+                        </li>
+                  
+    </header>
+    
+</body>
+</html>
